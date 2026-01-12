@@ -141,11 +141,11 @@ const skillMeta: Record<string, SkillMeta> = {
 };
 
 const categories: Record<string, string[]> = {
-  Backend: ['Python','FastAPI','Flask','SQL','PostgreSQL','Pandas','NumPy','Matplotlib','PyTorch','Scikit-learn','Ollama','n8n'],
-  Frontend: ['JavaScript','HTML5','CSS3','Framer Motion','Responsive Design','PySide6'],
-  DevOps: ['AWS','Azure','GCP','Docker','GitHub Actions','CI/CD Pipelines','Render/Fly.io/Vercel','Render'],
+  Backend: ['Python','FastAPI','Flask','PostgreSQL','Pandas','NumPy','Matplotlib','PyTorch','Scikit-learn','Ollama','n8n'],
+  Frontend: ['JavaScript','HTML5','CSS3','PySide6'],
+  DevOps: ['AWS','Azure','Docker','Git', 'GitHub','GitHub Actions','CI/CD Pipelines','Render'],
   Practices: ['SDLC Lifecycles','OOP','Functional Programming'],
-  Tools: ['Windows','Linux','Git','GitHub','GitHub Copilot','VS Code','Jupyter Notebooks','Notion','Excel','Markdown','Slack','KQL','LaTeX']
+  Tools: ['Windows','Linux','Excel','Jupyter Notebooks','Notion','Markdown','Slack','LaTeX']
 };
 
 export default function SkillsTabs({ compact }: { compact: boolean }) {

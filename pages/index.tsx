@@ -71,37 +71,35 @@ const experience: ExperienceItem[] = [
 
 const projects: Project[] = [
   {
-    title: 'Panoraxis AI Chatbot Platform',
-    subtitle: 'FastAPI • SentenceTransformers • FAISS • Supabase',
-    stack: ['FastAPI','FAISS','Supabase','AI'],
+    title: 'Systematic Trading & Market Analytics',
+    subtitle: 'NumPy • Pandas • Data Analysis',
+    stack: ['NumPy','Pandas','Analytics'],
     bullets: [
-      'Retrieval‑augmented FAQ + semantic search (SentenceTransformers + FAISS).',
-      'Secure FastAPI service (validation, headers, caching, sanitisation).',
-      'Unknown‑question logging (Supabase + CSV fallback) with LLaMA fallback path.',
-      'Embeddable branded widget with environment‑based configuration.'
+      'Built systematic analytics framework for on‑chain metrics, volume flows & holder distributions.',
+      'Implemented filter‑based signal generation with risk‑controlled position sizing.',
+      'Achieved ~30% average monthly ROI over the first two months through systematic testing.'
     ],
     href: '#',
     repo: '#'
   },
   {
-    title: 'Tax Manager',
-    subtitle: 'PySide6 • Pandas • Matplotlib • SQLite',
-    stack: ['PySide6','Pandas','SQLite','Matplotlib'],
+    title: 'Panoraxis AI Chatbot Platform',
+    subtitle: 'FastAPI • SentenceTransformers • FAISS • PostgreSQL',
+    stack: ['FastAPI','FAISS','PostgreSQL','AI'],
     bullets: [
-      'Desktop planner for UK salary modelling & scenario comparison.',
-      'Historical graphs, autosave, dashboards & PDF / CSV export.'
+      'Built retrieval‑augmented FAQ engine using transformer embeddings with FAISS vector search.',
+      'Implemented validation, caching & PII redaction; added unknown‑query logging (Supabase) with LLaMA fallback.'
     ],
     href: '#',
     repo: '#'
   },
   {
     title: 'NEA Stock Market Simulator',
-    subtitle: 'Python • Flask • SQLite • yfinance',
-    stack: ['Python','Flask','SQLite','yfinance'],
+    subtitle: 'Flask • HTML/CSS • SQLite • yfinance',
+    stack: ['Flask','SQLite','yfinance','HTML/CSS'],
     bullets: [
-      'Full‑stack trading simulator (auth, session management) – scored 66/70.',
-      'Pricing engine w/ realistic volatility & ~5s live auto‑updates.',
-      'Integrated yfinance data & portfolio tracking with validation.'
+      'Developed full‑stack simulator with session auth, volatility modelling & live charting.',
+      'Integrated yfinance, transaction validation & portfolio tracking; awarded 66/70.'
     ],
     href: '#',
     repo: '#'

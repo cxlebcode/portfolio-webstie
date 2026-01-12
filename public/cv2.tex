@@ -1,134 +1,160 @@
 \documentclass[a4paper,10pt]{article}
 
-\usepackage[left=0.8in,right=0.8in,top=0.9in,bottom=0.9in]{geometry}
-\usepackage{hyperref}
+% ---------- Page + typography ----------
+\usepackage[top=0.55in,bottom=0.6in,left=0.62in,right=0.62in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{XCharter}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
+\usepackage{tabularx}
 \usepackage{enumitem}
 \usepackage{titlesec}
-\usepackage{mathpazo}
-\usepackage{microtype}
-\usepackage[normalem]{ulem}
-\usepackage{ragged2e}
-\usepackage{xcolor}
 
-% Define the project command
-\newcommand{\project}[3]{\textbf{#1} \, \textcolor{gray}{| #2} \hfill #3 \\}
-
-% ---------- Global spacing ----------
 \pagestyle{empty}
 \setlength{\parindent}{0pt}
-\setlist[itemize]{noitemsep, topsep=3pt, leftmargin=1.2em}
-\renewcommand{\baselinestretch}{1.05}
+\setlength{\tabcolsep}{0pt}
 
-% ---------- Section headers (above line) ----------
-\titleformat{\section}{\large\bfseries}{}{0pt}{}[]
-\titlespacing*{\section}{0pt}{0.7em}{0.4em}
-\newcommand{\sectionline}{\vspace{-0.4em}\titlerule\vspace{0.4em}}
+% ATS/PDF text extraction friendliness (won't error if file missing)
+\IfFileExists{glyphtounicode.tex}{\input{glyphtounicode.tex}}{}
+\pdfgentounicode=1
 
-% ---------- Links ----------
-\hypersetup{colorlinks=true, urlcolor=black, linkcolor=black}
-\newcommand{\hreful}[2]{\href{#1}{\uline{#2}}}
+% ---------- Visual system ----------
+\definecolor{muted}{RGB}{90,90,90}
 
+\titleformat{\section}{\bfseries\large}{}{0pt}{}[\vspace{2pt}\titlerule\vspace{-6pt}]
+\titlespacing*{\section}{0pt}{8pt}{6pt}
+
+\setlist[itemize]{
+  leftmargin=12pt,
+  itemsep=2pt,
+  topsep=3pt,
+  parsep=0pt,
+  partopsep=0pt
+}
+
+% ---------- Layout helpers ----------
+\newcommand{\cvheader}[5]{%
+\begin{center}
+  {\Huge \textbf{#1}}\\[4pt]
+  \href{mailto:#2}{#2}\,\,\textcolor{muted}{\textbar}\,\,#3\,\,\textcolor{muted}{\textbar}\,
+  \href{https://caleblaing.tech}{Portfolio}\,\,{\textbar}\,
+  \href{#4}{LinkedIn}\,\,\textcolor{muted}{\textbar}\,
+  \href{#5}{GitHub}\,\,\textcolor{muted}{\textbar}
+  
+\end{center}
+\vspace{-10pt}
+}
+
+\newcommand{\entry}[4]{%
+\begin{tabularx}{\linewidth}{@{}X r@{}}
+  \textbf{#1} & {\small \textcolor{muted}{#4}}\\
+  \textit{#3} & {\small #2}\\
+\end{tabularx}
+\vspace{-2pt}
+}
+
+\newcommand{\project}[3]{%
+\begin{tabularx}{\linewidth}{@{}X r@{}}
+  \textbf{#1} & {\small \textcolor{muted}{#3}}\\
+  \multicolumn{2}{@{}l@{}}{\small \textcolor{muted}{#2}}\\
+\end{tabularx}
+\vspace{-2pt}
+}
+
+% ---------- Document ----------
 \begin{document}
 
 % ========================= HEADER =========================
-\begin{center}
-    {\Huge \textbf{Caleb Laing}}\\[6pt]
-    +44 7904 058913 \, | \,
-    \hreful{mailto:cchristianln01@gmail.com}{cchristianln01@gmail.com} \, | \,
-    \hreful{https://www.linkedin.com/in/calebcl}{LinkedIn} \, | \,
-    \hreful{https://github.com/cxlebcode}{GitHub}
-\end{center}
+\cvheader
+  {Caleb Laing}
+  {cchristianln01@gmail.com}
+  {}
+  {https://www.linkedin.com/in/calebcl}
+  {https://github.com/cxlebcode}
 
 % ========================= EDUCATION =========================
 \section*{Education}
-\sectionline
 
-\textbf{Highfields School} \hfill \textit{Wolverhampton, UK} \hfill Sep 2023 -- Jul 2026 \\
-A Levels: \textbf{Computer Science (B)}, \textbf{Business (C)} \textit{(achieved 2025)}; \textbf{Mathematics (A)} \textit{(predicted 2026)} \\[2pt]
+\vspace{3pt}
 
-\textbf{Wolverhampton Grammar School} \hfill \textit{Wolverhampton, UK} \hfill Sep 2018 -- Jul 2023 \\
-10 IGCSEs incl. \textbf{Mathematics 8}, \textbf{English Language 7}, \textbf{English Literature 6}
+\entry{Highfields School}{Wolverhampton, UK}{A Levels: Computer Science (B), Business (C), Mathematics (resit 2026, predicted A -  Exam Centre TBD)}{Sep 2023 -- Jul 2025}
+
+\entry{Wolverhampton Grammar School}{Wolverhampton, UK}{10 IGCSEs including Mathematics (8), English Language (7), English Literature (6)}{Sep 2018 -- Jul 2023}
 
 % ========================= EXPERIENCE =========================
 \section*{Experience}
-\sectionline
-
-\textbf{Panoraxis} \hfill \textit{Wolverhampton, UK} \hfill Jan 2025 -- Present \\
-\textit{Co-Founder \& Lead Developer}
+\entry{Panoraxis}{Wolverhampton, UK}{Co-Founder \& Lead Developer}{Jan 2025 -- Sep 2025}
 \begin{itemize}
-  \item Co-founded SaaS automation agency; negotiated \textbf{3 pilot SME clients} in Q1 via chatbot solutions.
-  \item Designed product architecture and deployment; aligned delivery with client timelines and scope.
-  \item Built AI FAQ platform (FastAPI, FAISS, Supabase) delivering \textbf{40\% faster query resolution} vs manual responses.
-  \item Implemented GDPR-aligned data handling with logging and PII redaction across deployments.
+  \item Built automation-focused SaaS; negotiated with \textbf{three SME pilot clients}.
+  \item Developed production systems with \textbf{FastAPI, FAISS, Supabase} and GDPR-aligned logging/PII-safe handling.
+  \item Delivered demos, pricing structures and deployment architecture to non-technical stakeholders, including pitching to an \textbf{international SEO agency}.
 \end{itemize}
 
-\textbf{IBM} \hfill \textit{Leicester, UK} \hfill Nov 2024 \\
-\textit{Work Experience Placement}
+\vspace{4pt}
+
+\entry{IBM}{Leicester, UK}{Work Experience Placement}{Nov 2024}
 \begin{itemize}
-  \item Engaged with professionals across project management, data engineering, and CSOC analysis.  
-  \item Gained insight into daily (BAU) and ad-hoc activities, and the essentials of project management including time and risk management.  
-  \item Explored tools such as JIRA, Trello, and Smartsheet to track workflows and improve team coordination.  
-  \item Learned the importance of clear communication and risk mitigation within security operations.  
+  \item Shadowed individuals across \textbf{CSOC analysis}, \textbf{data engineering} and \textbf{project management}.
+  \item Gained insight into daily BAU and ad-hoc activities and essentials of project management (time \& risk management).
+  \item Used \textbf{JIRA, Smartsheet and Trello} to understand Agile workflows.
 \end{itemize}
 
-\textbf{BT} \hfill \textit{Manchester, UK} \hfill Jul 2024 \\
-\textit{Work Experience Placement}
+\vspace{4pt}
+
+\entry{BT}{Manchester, UK}{Work Experience Placement}{Jul 2024}
 \begin{itemize}
-  \item Gained exposure to cybersecurity operations including threat hunting, incident response, and the use of Microsoft Defender and Sentinel.  
-  \item Observed a live DDoS mitigation and documented traffic filtering techniques.  
-  \item Learned threat-hunting practices such as automation, scheduled detection, and collaborative incident management.  
-  \item Explored the use of KQL and data analysis in monitoring systems, handling large volumes of security data.  
+  \item Observed real-time DDoS mitigation using Microsoft Defender/Sentinel and rule-based filtering.
+  \item Shadowed threat hunters utilising \textbf{KQL} and automation pipelines across \(\sim 4{,}300\) incidents/week.
+  \item Gained exposure to sandbox detection workflows and CySOC operational coordination (incident response).
 \end{itemize}
 
-\textbf{Creative Ideaz} \hfill \textit{Birmingham, UK} \hfill Apr 2024 \\
-\textit{Internship}
-\begin{itemize}
-  \item Collaborated with developers and SEOs on digital marketing, AI, and data interpretation projects.  
-  \item Analysed Google Analytics metrics (CTR, impressions, bounce rate) and recommended SEO changes to improve performance.  
-  \item Produced an AI-assisted promotional video for a new product (MiQuest), streamlining content production.  
-  \item Researched and tested AI-based image-editing workflows, identifying \textbf{3 viable automation tools} for potential integration.  
-\end{itemize}
+\vspace{4pt}
 
-\textbf{Freelance Programmer} \hfill \textit{Remote} \hfill 2023 -- Present
+\entry{Creative Ideaz}{Birmingham, UK}{Intern}{Apr 2024}
 \begin{itemize}
-  \item Delivered automation scripts, websites, scrapers, and SaaS prototypes for small businesses.
-  \item Shipped documented Python codebases with deployment-ready workflows and version control.
+  \item Collaborated with developers, SEOs and designers across AI-supported digital marketing workflows.
+  \item Analysed Google Analytics metrics (CTR, impressions, bounce rate) to guide SEO adjustments.
+  \item Produced AI-assisted promotional content for MiQuest; evaluated feasibility of AI-based editing pipeline integration.
 \end{itemize}
 
 % ========================= PROJECTS =========================
 \section*{Projects}
-\sectionline
+\vspace{2pt}
 
-\textbf{Panoraxis AI Chatbot Platform} \, \textcolor{gray}{| FastAPI, SentenceTransformers, FAISS, PostgreSQL} \hfill 2025 \\
+\project{Systematic Trading \& Market Analytics}{Numpy, Pandas}{Oct 2025}
 \begin{itemize}
-  \item Retrieval-augmented FAQ system using SentenceTransformers + FAISS.
-  \item Secure FastAPI service with input sanitisation, headers, validation, caching.
-  \item Unknown-question logging (Supabase/PostgreSQL + CSV fallback) with LLaMA fallback path.
-  \item Branded web widget for client sites; env-based configuration.
+  \item Built systematic analytics framework for on-chain metrics, volume flows and holder distributions.
+  \item Implemented filter-based signal generation with risk-controlled position sizing.
+  \item Achieved \(\sim 30\%\) average monthly ROI over the first two months through systematic testing.
 \end{itemize}
 
-\textbf{Tax Manager} \, \textcolor{gray}{| PySide6, Pandas, Matplotlib, SQLite} \hfill 2025 \\
+\vspace{4pt}
+
+\project{Panoraxis AI Chatbot Platform}{FastAPI, SentenceTransformers, FAISS, PostgreSQL}{Feb 2025 -- April 2025}
 \begin{itemize}
-  \item Desktop planner for UK salary modelling, scenario comparison, and self-assessment prep.
-  \item Features: historical graphs, autosave, dashboards, and PDF/CSV export.
-\end{itemize}
-\vspace{1em}
-\project{NEA Stock Market Simulator}{Python, Flask, SQLite, SQLAlchemy, yfinance}{Sep 2024 -- Jun 2025}
-\begin{itemize}
-  \item Developed a full-stack trading simulator with secure authentication (bcrypt) and session management; awarded \textbf{66/70} in A Level CS NEA.
-  \item Built pricing engine with realistic volatility (normal distribution + spikes) and live auto-updates every \textasciitilde5s.
-  \item Integrated yfinance data with JSON endpoints and charting; implemented trade execution and portfolio tracking with validation.
-  \item Authored 30,000-word technical report evaluating trading logic and system performance.
+  \item Built retrieval-augmented FAQ engine using transformer embeddings with FAISS vector search.
+  \item Implemented validation, caching and PII redaction; added unknown-query logging (Supabase) with LLaMA fallback.
 \end{itemize}
 
+\vspace{4pt}
 
+\project{NEA Stock Market Simulator}{Flask, HTML/CSS, SQLite, yfinance}{Sep 2024 -- Jun 2025}
+\begin{itemize}
+  \item Developed full-stack simulator with session auth, volatility modelling and live charting.
+  \item Integrated yfinance, transaction validation and portfolio tracking; awarded \textbf{66/70}.
+\end{itemize}
+
+\vspace{39pt}
 % ========================= SKILLS =========================
 \section*{Skills}
-\sectionline
 
-\textbf{Languages:} Python, JavaScript, SQL, HTML/CSS, KQL, \LaTeX \\[3pt]
-\textbf{Frameworks/Libraries:} FastAPI, Flask, PySide6, Pandas, NumPy, Matplotlib, PyTorch, scikit-learn \\[3pt]
-\textbf{Cloud:} AWS, Azure, GCP \textit{(familiarity via self-study)} \\[3pt]
-\textbf{Tools:} Git/GitHub, Docker, Linux, PostgreSQL, VS Code, Excel, n8n, Jupyter Notebooks, Ollama
+\vspace{3pt}
+\textbf{Languages:} Python, JavaScript, SQL, HTML/CSS, LaTeX \\[3pt]
+\textbf{Frameworks/Libraries:} FastAPI, Flask, PySide6, Pandas, NumPy, Matplotlib, scikit-learn \\[3pt]
+\textbf{Cloud:} AWS and Azure \textit{(in progress via self-study)} \\[3pt]
+\textbf{Technical Tools:} Git/GitHub, Docker, Linux, PostgreSQL, VS Code, Vercel, n8n, Jupyter Notebooks, Ollama, GitHub Actions \\[3pt]
+\textbf{Core Skills:} Data Analysis \& Interpretation, Version Control, Critical Thinking, Problem Solving, Communication, Adaptability
 
 \end{document}
